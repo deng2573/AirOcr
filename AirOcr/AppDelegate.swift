@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.backgroundColor = .white
+    window?.backgroundColor = UIColor.themeColor
     window?.makeKeyAndVisible()
-    setupJPush(launchOptions: launchOptions)
+//    setupJPush(launchOptions: launchOptions)
     setupBaiduOcrSDK()
     setupIQKeyboard()
     setupMainViewController()
@@ -42,11 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
   private func setupMainViewController() {
-    if VestManager.showVest() {
-      window?.rootViewController = VestViewController()
-    } else {
-      window?.rootViewController = TabBarController()
-    }
+    window?.rootViewController = TabBarController()
+//    if VestManager.showVest() {
+//      window?.rootViewController = VestViewController()
+//    } else {
+//      window?.rootViewController = TabBarController()
+//    }
   }
   
   private func setupJPush(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {

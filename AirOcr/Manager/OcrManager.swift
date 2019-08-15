@@ -28,7 +28,6 @@ class OcrManager: NSObject {
       info.text = text
       info.imageBase64 = imageBase64
       info.time = Date().timeIntervalSince1970
-      HistoryManager.writeHistoryInfo(historyInfo: info)
       completion(info)
     }, failHandler: { error in
     })

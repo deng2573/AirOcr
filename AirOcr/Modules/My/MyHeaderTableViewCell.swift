@@ -12,7 +12,7 @@ class MyHeaderTableViewCell: UITableViewCell {
 
   private lazy var contentBackgroundView: UIView = {
     let view = UIView(frame: .zero)
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor.themeTableViewCellBackgroundColor
     view.layer.shadowColor = UIColor.lightGray.cgColor
     view.layer.borderColor = view.layer.shadowColor
     view.layer.borderWidth = 0.01
@@ -34,14 +34,14 @@ class MyHeaderTableViewCell: UITableViewCell {
   private lazy var nameLable: UILabel = {
     let label = UILabel()
     label.text = "未设置"
-    label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     label.font = UIFont.boldSystemFont(ofSize: 18)
     return label
   }()
   
   private lazy var accountLable: UILabel = {
     let label = UILabel()
-    label.text = "ID:  TF0001"
+    label.text = "ID:  Ac0087"
     label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     label.font = UIFont.boldSystemFont(ofSize: 14)
     return label
@@ -63,7 +63,7 @@ class MyHeaderTableViewCell: UITableViewCell {
   }
   
   func setUpView() {
-    backgroundColor = UIColor.themeBackgroundColor
+    backgroundColor = UIColor.themeViewBackgroundColor
     
     contentView.addSubview(contentBackgroundView)
     contentBackgroundView.snp.makeConstraints({ (make) in

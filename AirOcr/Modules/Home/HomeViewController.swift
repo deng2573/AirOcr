@@ -12,8 +12,9 @@ class HomeViewController: ViewController {
 
   private lazy var takePictureButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-    button.layer.cornerRadius = screenWidth * 0.4 / 2
+//    button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+//    button.layer.cornerRadius = screenWidth * 0.4 / 2
+    button.setImage(#imageLiteral(resourceName: "home_camera"), for: .normal)
     button.tap(action: { _ in
       self.takePicture()
     })
@@ -25,17 +26,18 @@ class HomeViewController: ViewController {
     label.text = "拍照识别"
     label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     label.clipsToBounds = true
-    label.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+//    label.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
     label.textAlignment = .center
     label.layer.cornerRadius = 5
-    label.font = UIFont.boldSystemFont(ofSize: 16)
+    label.font = UIFont.boldSystemFont(ofSize: 14)
     return label
   }()
   
   private lazy var imagePickerButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-    button.layer.cornerRadius = screenWidth * 0.4 / 2
+//    button.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+//    button.layer.cornerRadius = screenWidth * 0.4 / 2
+    button.setImage(#imageLiteral(resourceName: "home_album"), for: .normal)
     button.tap(action: { _ in
       self.imagePicker()
     })
@@ -46,9 +48,9 @@ class HomeViewController: ViewController {
     let label = UILabel()
     label.text = "照片识别"
     label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    label.font = UIFont.boldSystemFont(ofSize: 16)
+    label.font = UIFont.boldSystemFont(ofSize: 14)
     label.clipsToBounds = true
-    label.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+//    label.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
     label.layer.cornerRadius = 5
     label.textAlignment = .center
     return label
@@ -60,7 +62,7 @@ class HomeViewController: ViewController {
   }
   
   private func setupHomeView() {
-    title = "首页"
+    title = "识图"
     view.addSubview(takePictureLabel)
     takePictureLabel.snp.makeConstraints({ (make) in
       make.centerX.equalToSuperview()
@@ -71,7 +73,7 @@ class HomeViewController: ViewController {
     view.addSubview(takePictureButton)
     takePictureButton.snp.makeConstraints({ (make) in
       make.centerX.equalToSuperview()
-      make.bottom.equalTo(takePictureLabel.snp.top).offset(-15)
+      make.bottom.equalTo(takePictureLabel.snp.top).offset(30)
       make.size.equalTo(CGSize(width: screenWidth * 0.4, height: screenWidth * 0.4))
     })
     
@@ -85,7 +87,7 @@ class HomeViewController: ViewController {
     view.addSubview(imagePickerLabel)
     imagePickerLabel.snp.makeConstraints({ (make) in
       make.centerX.equalToSuperview()
-      make.top.equalTo(imagePickerButton.snp.bottom).offset(15)
+      make.top.equalTo(imagePickerButton.snp.bottom).offset(-30)
       make.size.equalTo(takePictureLabel)
     })
   }
@@ -115,6 +117,9 @@ class HomeViewController: ViewController {
         self.detectText(image: image)
       }
     }
+    imagePickerViewController?.imagePickerControllerDidCancelHandle = {
+      self.dismiss(animated: false, completion: nil)
+    }
     present(imagePickerViewController!, animated: true, completion: nil)
   }
   
@@ -122,6 +127,7 @@ class HomeViewController: ViewController {
     HUD.loading()
     OcrManager.detectText(image: image, completion: { info in
       DispatchQueue.main.async(execute: {
+        HistoryManager.writeHistoryInfo(historyInfo: info)
         HUD.hide()
         self.dismiss(animated: false, completion: nil)
         let resultVC = OrcResultViewController(content: info)

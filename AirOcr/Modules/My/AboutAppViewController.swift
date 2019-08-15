@@ -20,7 +20,7 @@ class AboutAppViewController: ViewController {
   
   private lazy var nameLable: UILabel = {
     let label = UILabel()
-    label.text = "文件互传"
+    label.text = "以图识字"
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     label.textAlignment = .center
     label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -38,7 +38,7 @@ class AboutAppViewController: ViewController {
   
   private lazy var qqLable: UILabel = {
     let label = UILabel()
-    label.text = "QQ:  231151989809088"
+    label.text = "QQ:  1366263223"
     label.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     label.textAlignment = .center
     label.font = UIFont.boldSystemFont(ofSize: 15)

@@ -14,7 +14,7 @@ class HistoryCell: SwipeTableViewCell {
 
   private lazy var contentBackgroundView: UIView = {
     let view = UIView(frame: .zero)
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor.themeTableViewCellBackgroundColor
     view.layer.shadowColor = UIColor.lightGray.cgColor
     view.layer.borderColor = view.layer.shadowColor
     view.layer.borderWidth = 0.01
@@ -36,18 +36,18 @@ class HistoryCell: SwipeTableViewCell {
   private lazy var contentLabel: UILabel = {
     let label = UILabel()
     label.text = ""
-    label.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-    label.numberOfLines = 1
-    label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.textColor = UIColor.themeTextColor
+    label.numberOfLines = 2
+    label.font = UIFont.themeTextFont
     return label
   }()
   
   private lazy var timeLable: UILabel = {
     let label = UILabel()
     label.text = ""
-    label.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+    label.textColor = UIColor.themeSubTextColor
     label.numberOfLines = 0
-    label.font = UIFont.boldSystemFont(ofSize: 14)
+    label.font = UIFont.themeSubTextFont
     return label
   }()
   
@@ -60,7 +60,7 @@ class HistoryCell: SwipeTableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     selectionStyle = .none
-    backgroundColor = UIColor.themeBackgroundColor
+    backgroundColor = UIColor.themeViewBackgroundColor
     setupView()
   }
   

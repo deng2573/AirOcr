@@ -16,10 +16,12 @@ class NavigationController: UINavigationController {
   }
   
   func setUpView() {
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor.themeColor
     navigationBar.isTranslucent = false
-    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.themeTitleColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
+    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.themeNavigationTitleColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
     navigationBar.barTintColor = UIColor.themeColor
+    interactivePopGestureRecognizer?.delegate = self
+    delegate = self
   }
   
   override func pushViewController(_ viewController: UIViewController, animated: Bool) {
@@ -36,3 +38,15 @@ class NavigationController: UINavigationController {
   
 }
 
+extension NavigationController: UINavigationControllerDelegate {
+  
+}
+
+extension NavigationController: UIGestureRecognizerDelegate {
+   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    if viewControllers.count == 1 {
+      return false
+    }
+    return true
+  }
+}

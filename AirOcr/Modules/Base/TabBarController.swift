@@ -9,7 +9,7 @@
 import UIKit
 
 enum TabTitle: String {
-  case home = "首页"
+  case home = "识图"
   case my   = "我的"
 }
 
@@ -43,8 +43,8 @@ class TabBarController: UITabBarController {
       itemViewController.tabBarItem = UITabBarItem(title: itemTitles[i].rawValue,
                                                    image: UIImage(named: itemImages[i])?.withRenderingMode(.alwaysOriginal),
                                                    selectedImage: UIImage(named: itemSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
-      itemViewController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07058823529, green: 0.5882352941, blue: 0.8588235294, alpha: 1)], for: .selected)
-      
+      itemViewController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .selected)
+      itemViewController.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1), NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)], for: .normal)
       itemViewController.tabBarItem.tag = i
     }
     

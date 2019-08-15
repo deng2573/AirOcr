@@ -102,8 +102,8 @@ extension HistoryViewController: SwipeTableViewCellDelegate {
          self.historyList.remove(at: indexPath.row)
          HistoryManager.removeHistoryInfo(historyInfo: history)
       }
-      delete.image = #imageLiteral(resourceName: "tab_home_selected")
-      delete.backgroundColor = UIColor.themeBackgroundColor
+      delete.image = #imageLiteral(resourceName: "Trash")
+      delete.backgroundColor = UIColor.themeViewBackgroundColor
       return [delete]
     }
     return nil

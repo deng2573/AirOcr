@@ -30,8 +30,6 @@ target 'AirOcr' do
   pod 'TZImagePickerController'
   #键盘
   pod 'IQKeyboardManagerSwift'
-  # 滑动手势
-#  pod 'FDFullscreenPopGesture'
   #图片浏览
   pod 'YBImageBrowser'
   # 多页面嵌套

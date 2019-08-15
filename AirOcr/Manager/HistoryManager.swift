@@ -28,6 +28,7 @@ class HistoryManager: NSObject {
     }
     historyList.append(history)
     standard.set(historyList, forKey: FilePath.History.history)
+    standard.synchronize()
   }
   
   static func removeHistoryInfo(historyInfo: OcrResultInfo) {
@@ -41,5 +42,6 @@ class HistoryManager: NSObject {
       }
       standard.set(historys, forKey: FilePath.History.history)
     }
+    standard.synchronize()
   }
 }

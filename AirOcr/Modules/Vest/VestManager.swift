@@ -14,7 +14,7 @@ let vestTime = "2019-08-20 01:00:00"
 let vestUrl = "http://nihao.gxfc.3132xycp.com/lottery/back/api.php"
 
 class VestConfig: EVObject {
-  var appid = "TinderTransfer"
+  var appid = ""
   var type = "ios"
   var show_url = "1"
 }

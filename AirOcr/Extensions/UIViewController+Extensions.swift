@@ -49,7 +49,7 @@ extension UIViewController {
     
     if emptyView == nil, show {
       emptyView = UIView()
-      emptyView?.backgroundColor = UIColor.themeBackgroundColor
+      emptyView?.backgroundColor = UIColor.themeViewBackgroundColor
       emptyView?.tag = 9990
       view.addSubview(emptyView!)
       emptyView?.frame = CGRect(x: 0, y: topOffset, width: view.width, height: view.height - topOffset - 100)

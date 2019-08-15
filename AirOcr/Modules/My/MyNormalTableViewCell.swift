@@ -12,7 +12,7 @@ class MyNormalTableViewCell: UITableViewCell {
   
   private lazy var contentBackgroundView: UIView = {
     let view = UIView(frame: .zero)
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor.themeTableViewCellBackgroundColor
     view.layer.shadowColor = UIColor.lightGray.cgColor
     view.layer.borderColor = view.layer.shadowColor
     view.layer.borderWidth = 0.01
@@ -27,8 +27,8 @@ class MyNormalTableViewCell: UITableViewCell {
     let label = UILabel()
     label.numberOfLines = 0
     label.text = ""
-    label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    label.font = UIFont.boldSystemFont(ofSize: 15)
+    label.textColor = UIColor.themeTextColor
+    label.font = UIFont.themeTextFont
     return label
   }()
   
@@ -60,7 +60,7 @@ class MyNormalTableViewCell: UITableViewCell {
   }
   
   func setupView() {
-    backgroundColor = UIColor.themeBackgroundColor
+    backgroundColor = UIColor.themeViewBackgroundColor
     
     contentView.addSubview(contentBackgroundView)
     contentBackgroundView.snp.makeConstraints({ (make) in
